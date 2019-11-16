@@ -26,13 +26,3 @@ input {
 }
 
 
-while($row = $result->fetch_assoc()) { ?>
-  		<tr>
-  			<?php $m = $row['month']; ?>
-  			<td><?= $month[$m] ?></td>
-  			<td><?= $row['year'] ?></td>
-  			<td><?= $row['bus_no'] ?></td>
-  			<td><?= $row['year'] ?></td>
-  			<td><?php if($row['status']==1){ echo '<div style="background-color : #4caf50; text-align : center;">Paid</div>';}else{echo '<div style="background-color : #d50000; text-align : center;">Pending</div>';}  ?></td>
-  		</tr>
-  		<?php } ?>

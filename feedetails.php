@@ -25,12 +25,12 @@ if (! isset($_SESSION['user'])) {
 <body>
 <?php 
 $id = $_SESSION['userId'];
-include('includes/conn.php');
-$sql="SELECT * FROM students WHERE id='$id'";
-        $result=$db->query($sql) or die($db->error);
-        $row = $result->fetch_assoc();
 $year = $_GET['year'];
 $yoj = $_SESSION['year'];
+include('includes/conn.php');
+$sql="SELECT * FROM fee_payment f , location l , students s WHERE f.student_id='$id' AND f.year = '$year' AND l.id=s.destination AND f.student_id=s.id";
+        $result=$db->query($sql) or die($db->error);
+        
         
 ?>
 <nav class="navbar navbar-inverse">
@@ -54,7 +54,7 @@ $yoj = $_SESSION['year'];
   	<div class="col-md-12" style="padding: 10px;">
   		<span> Choose a year : </span>
   			<?php for ($i=0; $i < 4 ; $i++) { ?>
-  			<span><button class="Btnyear"  style="<?php if($yoj == $year){ echo 'background-color: #4caf50'; } ?>"> <?= ($yoj + $i) ?></button></span>
+  			<span><a style="text-decoration: none; color: #fff;" href="feedetails.php?year=<?= ($yoj + $i) ?>"><button  class="Btnyear"  style="<?php if($yoj+$i == $year){ echo 'background-color: #4caf50'; } ?>"> <?= ($yoj + $i) ?></button></a></span>
   			<?php } ?>
   			
   	</div>
@@ -66,90 +66,46 @@ $yoj = $_SESSION['year'];
   			<th>Fees</th>
   			<th>Status</th>
   		</tr>
+  		<?php 
+  			$month = [
+  				'1' => 'January' , 
+  				
+  				'2' => 'February' , 
+  				
+  				'3' => 'March' , 
+  				
+  				'4' => 'April' , 
+  				
+  				'5' => 'May' , 
+  				
+  				'6' => 'June' , 
+  				
+  				'7' => 'July' , 
+  				
+  				'8' => 'August' , 
+  				
+  				'9' => 'September' , 
+  				
+  				'10' => 'October' , 
+  				
+  				'11' => 'November' , 
+  				
+  				'12' => 'December' 
+
+  			];
+  		 ?>
+  		<?php $i = 0;
+      while($row = $result->fetch_assoc()) { ?>
   		<tr>
-  			<td>January</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
+  			<?php $m = $row['month']; ?>
+  			<td><?= $month[$m] ?></td>
+  			<td><?= $row['year'] ?></td>
+  			<td><?= $row['bus_no'] ?></td>
+  			<td><?= $row['price'] ?></td>
+  			<td><?php if($row['status']==1){ echo '<div style="background-color : #4caf50; text-align : center;">Paid</div>';}else{echo '<div style="background-color : #d50000; text-align : center;">Pending</div>';}  ?></td>
   		</tr>
-  		<tr>
-  			<td>February</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>March</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>April</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>May</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>June</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>July</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>August</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>September</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>October</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>November</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  		<tr>
-  			<td>December</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
+  		<?php } ?>
+
   	</table>
     
 

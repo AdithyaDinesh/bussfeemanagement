@@ -27,7 +27,7 @@ if (! isset($_SESSION['user'])) {
 <?php 
 $id = $_SESSION['userId'];
 include('includes/conn.php');
-$sql="SELECT * FROM students WHERE id='$id'";
+$sql="SELECT * FROM students s , location l WHERE s.id='$id' AND s.destination = l.id";
         $result=$db->query($sql) or die($db->error);
         $row = $result->fetch_assoc();
         $_SESSION['year'] = $row['yoj'];
@@ -63,12 +63,22 @@ $sql="SELECT * FROM students WHERE id='$id'";
         <tr>
           <td><h4>USN</h4></td>
           <td  id="usn" style="line-height: 3em;"><span class="before"><?= $row['usn'] ?></span>
-          <span class="after"><input type="text" class="form-control" name="usn" value="<?= $row['usn'] ?>"></span>
+          <span class="after"><input type="text" class="form-control" name="usn" value="<?= $row['usn'] ?>" disabled></span>
         </td>
         </tr>
         <tr><td><h4>Locality</h4></td>
-        <td id="location" style="line-height: 3em;"> <span class="before"><?= $row['destination'] ?></span>
-        <span class="after"><input type="text" class="form-control" name="destination" value="<?= $row['destination'] ?>"></span>
+        <td id="location" style="line-height: 3em;"> <span class="before"><?= $row['place'] ?></span>
+        <!-- <span class="after">
+          <select class="form-control" name="destination">
+            <?php 
+
+        $sql="SELECT * FROM location ";
+        $res=$db->query($sql) or die($db->error);
+        while($ret = $res->fetch_assoc()) { ?>
+            <option value="<?= $ret['id']?>" <?php if($row['place']===$ret['place']){ echo "selected = 'selected'" ;} ?>><?= $ret['place']?></option>
+          <?php } ?>
+          </select>
+        </span> -->
       </td>
          </tr>
          <tr>
@@ -77,8 +87,8 @@ $sql="SELECT * FROM students WHERE id='$id'";
 
          </tr>
          <tr>
-           <td style="width: 60%;"><h4>Fees Per annum </h4> </td>
-           <td style="line-height: 3em;"> &#8377; <?= $row['fees'] ?> /- </td>
+           <td style="width: 60%;"><h4>Fees Per month </h4> </td>
+           <td style="line-height: 3em;"> &#8377; <?= $row['price'] ?> /- </td>
 
          </tr>
       </form>
@@ -118,8 +128,8 @@ $sql="SELECT * FROM students WHERE id='$id'";
     show[0].style.display = "inline-block";
     hide[1].style.display = "none";
     show[1].style.display = "inline-block";
-    hide[2].style.display = "none";
-    show[2].style.display = "inline-block";
+    // hide[2].style.display = "none";
+    // show[2].style.display = "inline-block";
   }
   function callCancel(){
     var hide = document.getElementsByClassName("after");
@@ -131,8 +141,8 @@ $sql="SELECT * FROM students WHERE id='$id'";
     show[0].style.display = "inline-block";
     hide[1].style.display = "none";
     show[1].style.display = "inline-block";
-    hide[2].style.display = "none";
-    show[2].style.display = "inline-block";
+    // hide[2].style.display = "none";
+    // show[2].style.display = "inline-block";
   }
   function callSubmit(){
     document.getElementById("update-form").submit();
