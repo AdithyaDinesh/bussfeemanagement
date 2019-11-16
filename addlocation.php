@@ -64,11 +64,10 @@ table tr {
       <a class="navbar-brand" href="#">Hello , <?= $_SESSION['admin'] ?></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="dashboard.php">Add Student</a></li>
-      <li><a href="addlocation.php">Add Location</a></li>
+      <li><a href="dashboard.php">Add Student</a></li>
+      <li class="active"><a href="addlocation.php">Add Location</a></li>
       <li><a href="fee.php">Update Fees</a></li>
       <li><a href="../includes/logout.php">Logout</a></li>
-      
     </ul>
   </div>
 </nav>
@@ -76,47 +75,33 @@ table tr {
 <div class="container">
   <div class="col-md-3"></div>
   <div class="profile col-md-6">
-    <h3 class="text-center">Add Student</h3>
-    <form action="includes/addstudent.php" method="POST">
+    <h3 class="text-center">Add Location</h3>
+    <form action="includes/add.php" method="POST">
       
     <table class="table form-group">
       <tbody>
         <tr>
-          <td>Name</td>
-          <td>
-            <input type="text" name="name" class="form-control">
-          </td>
-        </tr>
-        <tr>
-          <td>USN</td>
-          <td>
-            <input type="text" name="usn" class="form-control">
-          </td>
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td>
-            <input type="Password" name="password" class="form-control">
-          </td>
-        </tr>
-        <tr>
-          <td>Year of Joining</td>
-          <td>
-            <input type="text" name="yoj" class="form-control">
-          </td>
-        </tr>
-        <tr>
           <td>Location</td>
           <td>
-            <select class="form-control" name="destination">
-            <?php 
-
-        $sql="SELECT * FROM location ";
-        $res=$db->query($sql) or die($db->error);
-        while($ret = $res->fetch_assoc()) { ?>
-            <option value="<?= $ret['id']?>"><?= $ret['place']?></option>
-          <?php } ?>
-          </select>
+            <input type="text" name="location" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Distance from college</td>
+          <td>
+            <input type="number" name="distance" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Busnumber</td>
+          <td>
+            <input type="number" name="busno" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>
+            <input type="number" name="price" class="form-control">
           </td>
         </tr>
         <tr>

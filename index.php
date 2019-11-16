@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>college bus fees management</title>
+	<title>Admin login</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -22,9 +22,9 @@ session_start();
 <div class="container" id="container">
   <div class="form-container sign-in-container">
     <form action="includes/login.php" method="POST">
-      <h1>Sign in </h1>
+      <h1>Admin Panel </h1>
       <br><br>
-      <input type="text" name="usn" placeholder="Enter your USN" required="true" />
+      <input type="text" name="username" placeholder="Enter your username" required="true" />
       <input type="password" name="password" placeholder="Password" required="true" />
       <!-- <button name="submit" onclick="submitIt()">Sign In</button> -->
       <input id="loginBtn" value="Sign In" type="submit" name="submit">
@@ -39,8 +39,8 @@ session_start();
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-right">
-        <h1>Hello, Friend!</h1>
-        <p>Enter your personal details and start journey with us</p>
+        <h1>Hello, Admin!</h1>
+        <p>Enter your personal details to access dashboard</p>
         
       </div>
     </div>
