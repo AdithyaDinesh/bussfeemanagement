@@ -41,7 +41,6 @@ $sql="SELECT * FROM fee_payment f , location l , students s WHERE f.student_id='
     <ul class="nav navbar-nav">
       <li><a href="dashboard.php">Profile</a></li>
       <li class="active"><a href="feedetails.php?year=<?= $row['yoj'] ?>">Fee details</a></li>
-      <li><a href="#">Page 2</a></li>
       <li><a href="includes/logout.php">Logout</a></li>
     </ul>
   </div>

@@ -66,7 +66,7 @@ table tr {
     <ul class="nav navbar-nav">
       <li><a href="dashboard.php">Add Student</a></li>
       <li class="active"><a href="addlocation.php">Add Location</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="fee.php">Update Fees</a></li>
       <li><a href="../includes/logout.php">Logout</a></li>
     </ul>
   </div>
@@ -83,25 +83,25 @@ table tr {
         <tr>
           <td>Location</td>
           <td>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="location" class="form-control">
           </td>
         </tr>
         <tr>
           <td>Distance from college</td>
           <td>
-            <input type="number" name="usn" class="form-control">
+            <input type="number" name="distance" class="form-control">
           </td>
         </tr>
         <tr>
           <td>Busnumber</td>
           <td>
-            <input type="number" name="password" class="form-control">
+            <input type="number" name="busno" class="form-control">
           </td>
         </tr>
         <tr>
           <td>Price</td>
           <td>
-            <input type="number" name="yoj" class="form-control">
+            <input type="number" name="price" class="form-control">
           </td>
         </tr>
         <tr>

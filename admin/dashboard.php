@@ -66,8 +66,9 @@ table tr {
     <ul class="nav navbar-nav">
       <li class="active"><a href="dashboard.php">Add Student</a></li>
       <li><a href="addlocation.php">Add Location</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="fee.php">Update Fees</a></li>
       <li><a href="../includes/logout.php">Logout</a></li>
+      
     </ul>
   </div>
 </nav>
